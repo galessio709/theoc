@@ -60,17 +60,17 @@ Backend stage:
 ## Usage
 
 1. First, the user must upload an Object-Centric Events Log or use a sample log from those available in the list
-![Upload log](./images/log.png)
+<img src="./images/log.png" alt="Upload log" width="200"/>![]()
 
 1. Then the user can define the OCCR by specifying its elements through the user interface
    - The first Event Pattern can be defined by choosing the event type, the eventual event’s attribute constraints, the number, and the qualifier of the event-to-object relation, the object type, and finally, the eventual object’s attribute constraints
-   ![Define Pa](./images/ea.png)
+   <img src="./images/ea.png" alt="Define Pa" width="200"/>![Define Pa]()
 
    - The object-centric Flow Pattern (FP) is defined with the FP name. Only for binaries FPs, the user must define also the Temporal Constraint and the Event Linkage, i.e., a list of object-to-object relations
-   ![Define FP](./images/psi.png)
+   <img src="./images/eb.png" alt="Define Pb" width="200"/>![Define FP](./images/psi.png)
 
    - The second Event Pattern must be defined when a binary FP is chosen
-   ![Define Pb](./images/eb.png)
+   <img src="./images/eb.png" alt="Define Pb" width="200"/>
 
 2. By clicking the “Apply” button, the OCCR will be applied to the object-centric events log, and a preview of the matching and non-matching sets will be shown for a first inspection. The user can download the sets by clicking the “Download full JSON” link
-![OCCR results](./images/results.png)
+<img src="./images/eb.png" alt="Define Pb" width="200"/>![OCCR results](./images/results.png)

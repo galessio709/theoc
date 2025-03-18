@@ -23,6 +23,9 @@ dist/
 target/
 dist/
 
+# Pyhton
+**/__pycache__/
+
 # JetBrains IDE
 .idea/
 
