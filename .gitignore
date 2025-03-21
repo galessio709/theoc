@@ -25,6 +25,7 @@ dist/
 
 # Pyhton
 **/__pycache__/
+**/benchmark_results_*
 
 # JetBrains IDE
 .idea/

@@ -111,17 +111,12 @@ def cleanup():
     gc.collect()  # Force garbage collection after each test
 
 @pytest.mark.parametrize("dataset", data_list)
-def test_u_log(benchmark, dataset):
+def test_R1_log(benchmark, dataset):
     """Test evalOCCRb for correctness and scalability."""
     setup_test_data(dataset)
 
     # Performance Benchmarking
-    # start_time = time.time()
     benchmark(lambda: logic.evalOCCRu(epU1, fpU1))
-    # elapsed_time = time.time() - start_time
-
-    # print(f"evalOCCRb - Dataset size: {len(dataset['objects'])} objects, {len(dataset['events'])} events")
-    # print(f"Execution Time: {elapsed_time:.4f} seconds")
 
     # Memory Profiling
     tracemalloc.start()
@@ -129,13 +124,10 @@ def test_u_log(benchmark, dataset):
     memory_usage = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # print(f"Memory Usage: {memory_usage[1] / 1024:.2f} KB")
-
     eA = logic.evalP(epU1.et, epU1.phiet, epU1.op, epU1.n, epU1.q, epU1.ot, epU1.phiot)
-    # eB = logic.evalP(epB2a.et, epB2a.phiet, epB2a.op, epB2a.n, epB2a.q, epB2a.ot, epB2a.phiot)
     # Add extra info to benchmark results
     benchmark.extra_info["Event log"] = name
-    benchmark.extra_info["Rule id"] = "u"
+    benchmark.extra_info["Rule id"] = "R1"
     benchmark.extra_info["|events|"] = len(dataset['events'])
     benchmark.extra_info["|objects|"] = len(dataset['objects'])
     benchmark.extra_info["|epA|"] = len(eA)
@@ -144,17 +136,13 @@ def test_u_log(benchmark, dataset):
     benchmark.extra_info["memory_used"] = f"{memory_usage[1] / 1024:.2f} KB"
 
 @pytest.mark.parametrize("dataset", data_list)
-def test_b_log_2a(benchmark, dataset):
+def test_R3_log(benchmark, dataset):
     """Test evalOCCRb for correctness and scalability."""
     setup_test_data(dataset)
 
     # Performance Benchmarking
-    # start_time = time.time()
     benchmark(lambda: logic.evalOCCRb(epA2a, fpB2a, epB2a))
-    # elapsed_time = time.time() - start_time
 
-    # print(f"evalOCCRb - Dataset size: {len(dataset['objects'])} objects, {len(dataset['events'])} events")
-    # print(f"Execution Time: {elapsed_time:.4f} seconds")
 
     # Memory Profiling
     tracemalloc.start()
@@ -162,13 +150,11 @@ def test_b_log_2a(benchmark, dataset):
     memory_usage = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # print(f"Memory Usage: {memory_usage[1] / 1024:.2f} KB")
-
     eA = logic.evalP(epA2a.et, epA2a.phiet, epA2a.op, epA2a.n, epA2a.q, epA2a.ot, epA2a.phiot)
     eB = logic.evalP(epB2a.et, epB2a.phiet, epB2a.op, epB2a.n, epB2a.q, epB2a.ot, epB2a.phiot)
     # Add extra info to benchmark results
     benchmark.extra_info["Event log"] = name
-    benchmark.extra_info["Rule id"] = "b_simple"
+    benchmark.extra_info["Rule id"] = "R3"
     benchmark.extra_info["|events|"] = len(dataset['events'])
     benchmark.extra_info["|objects|"] = len(dataset['objects'])
     benchmark.extra_info["|epA|"] = len(eA)
@@ -177,17 +163,13 @@ def test_b_log_2a(benchmark, dataset):
     benchmark.extra_info["memory_used"] = f"{memory_usage[1] / 1024:.2f} KB"
 
 @pytest.mark.parametrize("dataset", data_list)
-def test_b_log_2b(benchmark, dataset):
+def test_R2_log(benchmark, dataset):
     """Test evalOCCRb for correctness and scalability."""
     setup_test_data(dataset)
     
     # Performance Benchmarking
-    # start_time = time.time()
     benchmark(lambda: logic.evalOCCRb(epA2b, fpB2b, epB2b))
-    # elapsed_time = time.time() - start_time
 
-    # print(f"evalOCCRb - Dataset size: {len(dataset['objects'])} objects, {len(dataset['events'])} events")
-    # print(f"Execution Time: {elapsed_time:.4f} seconds")
 
     # Memory Profiling
     tracemalloc.start()
@@ -195,13 +177,11 @@ def test_b_log_2b(benchmark, dataset):
     memory_usage = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # print(f"Memory Usage: {memory_usage[1] / 1024:.2f} KB")
-
     eA = logic.evalP(epA2b.et, epA2b.phiet, epA2b.op, epA2b.n, epA2b.q, epA2b.ot, epA2b.phiot)
     eB = logic.evalP(epB2b.et, epB2b.phiet, epB2b.op, epB2b.n, epB2b.q, epB2b.ot, epB2b.phiot)
     # Add extra info to benchmark results
     benchmark.extra_info["Event log"] = name
-    benchmark.extra_info["Rule id"] = "b_simple_filt"
+    benchmark.extra_info["Rule id"] = "R2"
     benchmark.extra_info["|events|"] = len(dataset['events'])
     benchmark.extra_info["|objects|"] = len(dataset['objects'])
     benchmark.extra_info["|epA|"] = len(eA)
@@ -210,17 +190,13 @@ def test_b_log_2b(benchmark, dataset):
     benchmark.extra_info["memory_used"] = f"{memory_usage[1] / 1024:.2f} KB"
 
 @pytest.mark.parametrize("dataset", data_list)
-def test_b_log_3a(benchmark, dataset):
+def test_R5_log(benchmark, dataset):
     """Test evalOCCRb for correctness and scalability."""
     setup_test_data(dataset)
 
     # Performance Benchmarking
-    # start_time = time.time()
     benchmark(lambda: logic.evalOCCRb(epA3a, fpB3a, epB3b))
-    # elapsed_time = time.time() - start_time
 
-    # print(f"evalOCCRb - Dataset size: {len(dataset['objects'])} objects, {len(dataset['events'])} events")
-    # print(f"Execution Time: {elapsed_time:.4f} seconds")
 
     # Memory Profiling
     tracemalloc.start()
@@ -228,13 +204,11 @@ def test_b_log_3a(benchmark, dataset):
     memory_usage = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # print(f"Memory Usage: {memory_usage[1] / 1024:.2f} KB")
-
     eA = logic.evalP(epA3a.et, epA3a.phiet, epA3a.op, epA3a.n, epA3a.q, epA3a.ot, epA3a.phiot)
     eB = logic.evalP(epB3a.et, epB3a.phiet, epB3a.op, epB3a.n, epB3a.q, epB3a.ot, epB3a.phiot)
     # Add extra info to benchmark results
     benchmark.extra_info["Event log"] = name
-    benchmark.extra_info["Rule id"] = "b_int"
+    benchmark.extra_info["Rule id"] = "R5"
     benchmark.extra_info["|events|"] = len(dataset['events'])
     benchmark.extra_info["|objects|"] = len(dataset['objects'])
     benchmark.extra_info["|epA|"] = len(eA)
@@ -243,17 +217,13 @@ def test_b_log_3a(benchmark, dataset):
     benchmark.extra_info["memory_used"] = f"{memory_usage[1] / 1024:.2f} KB"
 
 @pytest.mark.parametrize("dataset", data_list)
-def test_b_log_3b(benchmark, dataset):
+def test_R4_log(benchmark, dataset):
     """Test evalOCCRb for correctness and scalability."""
     setup_test_data(dataset)
 
     # Performance Benchmarking
-    # start_time = time.time()
     benchmark(lambda: logic.evalOCCRb(epA3b, fpB3b, epB3b))
-    # elapsed_time = time.time() - start_time
 
-    # print(f"evalOCCRb - Dataset size: {len(dataset['objects'])} objects, {len(dataset['events'])} events")
-    # print(f"Execution Time: {elapsed_time:.4f} seconds")
 
     # Memory Profiling
     tracemalloc.start()
@@ -261,13 +231,11 @@ def test_b_log_3b(benchmark, dataset):
     memory_usage = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # print(f"Memory Usage: {memory_usage[1] / 1024:.2f} KB")
-
     eA = logic.evalP(epA3b.et, epA3b.phiet, epA3b.op, epA3b.n, epA3b.q, epA3b.ot, epA3b.phiot)
     eB = logic.evalP(epB3b.et, epB3b.phiet, epB3b.op, epB3b.n, epB3b.q, epB3b.ot, epB3b.phiot)
     # Add extra info to benchmark results
     benchmark.extra_info["Event log"] = name
-    benchmark.extra_info["Rule id"] = "b_int_filt"
+    benchmark.extra_info["Rule id"] = "R4"
     benchmark.extra_info["|events|"] = len(dataset['events'])
     benchmark.extra_info["|objects|"] = len(dataset['objects'])
     benchmark.extra_info["|epA|"] = len(eA)
@@ -276,17 +244,13 @@ def test_b_log_3b(benchmark, dataset):
     benchmark.extra_info["memory_used"] = f"{memory_usage[1] / 1024:.2f} KB"
 
 @pytest.mark.parametrize("dataset", data_list)
-def test_b_log_4(benchmark, dataset):
+def test_R6_log(benchmark, dataset):
     """Test evalOCCRb for correctness and scalability."""
     setup_test_data(dataset)
 
     # Performance Benchmarking
-    # start_time = time.time()
     benchmark(lambda: logic.evalOCCRb(epA4, fpB4, epB4))
-    # elapsed_time = time.time() - start_time
 
-    # print(f"evalOCCRb - Dataset size: {len(dataset['objects'])} objects, {len(dataset['events'])} events")
-    # print(f"Execution Time: {elapsed_time:.4f} seconds")
 
     # Memory Profiling
     tracemalloc.start()
@@ -294,13 +258,11 @@ def test_b_log_4(benchmark, dataset):
     memory_usage = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # print(f"Memory Usage: {memory_usage[1] / 1024:.2f} KB")
-
     eA = logic.evalP(epA4.et, epA4.phiet, epA4.op, epA4.n, epA4.q, epA4.ot, epA4.phiot)
     eB = logic.evalP(epB4.et, epB4.phiet, epB4.op, epB4.n, epB4.q, epB4.ot, epB4.phiot)
     # Add extra info to benchmark results
     benchmark.extra_info["Event log"] = name
-    benchmark.extra_info["Rule id"] = "b_compl"
+    benchmark.extra_info["Rule id"] = "R6"
     benchmark.extra_info["|events|"] = len(dataset['events'])
     benchmark.extra_info["|objects|"] = len(dataset['objects'])
     benchmark.extra_info["|epA|"] = len(eA)
