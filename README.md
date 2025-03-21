@@ -80,7 +80,7 @@ Backend stage:
 To replicate the performance analysis of the Object-Centric Compliance Checking tool, follow these steps:
 
 ### 1. Setup the Environment
-The application backend must running with Docker or manually, refer to "Getting Started" section of this readme.
+The application backend must be running with Docker or manually, refer to "Getting Started" section of this readme.
 
 ### 2. Running Performance Tests
 The tests are executed using `pytest` and `pytest-benchmark`. Run the following commands:
@@ -95,6 +95,6 @@ Benchmark results are stored in `tests/results/`.
 
 ### 3. Analyzing and Visualizing Results
 After running the tests, the performance data can be processed using provided Python notebooks in `backend/tests/processing/`.
-These notebooks generate detailed benchmark tables used to builg the graphs to visualize execution times and scalability trends.
+These notebooks generate detailed benchmark tables used to build the graphs to visualize execution times and scalability trends.
 
 For more details, refer to the [technical report](https://anonymous.4open.science/r/8601/evaluation/tech_report.pdf).
